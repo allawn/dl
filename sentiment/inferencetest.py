@@ -24,7 +24,7 @@ batchSize=1
 vocabulary_size = 50000
 embedding_size=128
 
-ckpt_dir = "ckp.ckpt"
+ckpt_dir = "C:\\wuwei\\work\\github\\data\\ckp.chpt"
 
 def inference():
     dicPath="C:\\wuwei\\work\\github\\data\\imdb.dict.pkl"
@@ -42,7 +42,7 @@ def inference():
         embeddings_inputs = tf.Variable(
             tf.random_uniform([vocabulary_size, embedding_size], -1.0, 1.0))
 
-        logist = model.inference2(encoder_inputs, embeddings_inputs,classNum)
+        logist = model.inference2(encoder_inputs, embeddings_inputs,classNum,isTrainModel=False)
 
         inputs_batch_major = np.zeros(shape=[batchSize, len(inference_data[0])], dtype=np.int32)
         for i in range(len(inference_data[0])):
@@ -51,8 +51,8 @@ def inference():
         saver = tf.train.Saver()
 
     with tf.Session(graph=graph) as sess:
-        # saver.restore(sess,ckpt_dir)
-        sess.run(tf.global_variables_initializer())
+        saver.restore(sess,ckpt_dir)
+        # sess.run(tf.global_variables_initializer())
 
         feed = {encoder_inputs: inputs_batch_major}
 

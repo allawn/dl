@@ -17,3 +17,6 @@ Iteration: 5998         lossVal: 0.226  accuracyVal: 0.969
 Iteration: 5999         lossVal: 0.199  accuracyVal: 0.969
 Iteration: 6000         lossVal: 0.139  accuracyVal: 0.938
 
+The inference results:
+('The logist val is: ', array([-3.03123164,  3.10080051], dtype=float32))
+The predict class is: 1
