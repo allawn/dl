@@ -1,3 +1,8 @@
+set python path example:
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+
 start jupyter notebook:
 jupyter notebook --allow-root  --ip=* --no-browser
+
+
 
