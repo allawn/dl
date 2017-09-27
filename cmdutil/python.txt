@@ -1,0 +1,3 @@
+start jupyter notebook:
+jupyter notebook --allow-root  --ip=* --no-browser
+
