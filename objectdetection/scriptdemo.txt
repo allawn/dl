@@ -1,0 +1,37 @@
+
+python object_detection/create_pascal_tf_record.py \
+    --label_map_path=object_detection/data/pascal_label_map.pbtxt \
+    --data_dir=/opt/wuwei/dataset/VOCdevkit --year=VOC2012 --set=train \
+    --output_path=/opt/wuwei/dataset/pascal_train.record
+	
+
+	
+python object_detection/create_pascal_tf_record.py \
+    --label_map_path=object_detection/data/pascal_label_map.pbtxt \
+    --data_dir=/opt/wuwei/dataset/VOCdevkit --year=VOC2012 --set=val \
+    --output_path=/opt/wuwei/dataset/pascal_val.record
+	
+	
+	
+python object_detection/create_pet_tf_record.py \
+    --label_map_path=object_detection/data/pet_label_map.pbtxt \
+    --data_dir=/opt/wuwei/dataset/pet \
+    --output_dir=/opt/wuwei/dataset/pet
+	
+	
+	
+	
+python object_detection/train.py \
+    --logtostderr \
+    --pipeline_config_path=/opt/wuwei/dataset/faster_rcnn_resnet101_pets.config \
+    --train_dir=/opt/wuwei/dataset/pettraindir
+	
+	
+python object_detection/eval.py \
+    --logtostderr \
+    --pipeline_config_path=/opt/wuwei/dataset/faster_rcnn_resnet101_pets.config \
+    --checkpoint_dir=/opt/wuwei/dataset/pettraindir \
+    --eval_dir=/opt/wuwei/dataset/petevaldir
+	
+	
+tensorboard --logdir=/opt/wuwei/dataset/petevaldir
