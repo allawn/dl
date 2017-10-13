@@ -1,0 +1,7 @@
+stanford course:
+http://cs231n.stanford.edu/syllabus.html
+
+Faster RCNN:
+https://arxiv.org/pdf/1506.01497.pdf
+https://zhuanlan.zhihu.com/p/23341500
+
