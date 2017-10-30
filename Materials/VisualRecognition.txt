@@ -1,7 +1,35 @@
 stanford course:
 http://cs231n.stanford.edu/syllabus.html
+http://www.jianshu.com/p/cef69c6651a9
+
+Fast RCNN:
+https://zhuanlan.zhihu.com/p/24780395
 
 Faster RCNN:
 https://arxiv.org/pdf/1506.01497.pdf
 https://zhuanlan.zhihu.com/p/23341500
+http://blog.csdn.net/zy1034092330/article/details/62044941
+http://www.360doc.com/content/17/0303/14/10408243_633634497.shtml
+https://zhuanlan.zhihu.com/p/24916624 (detail)
+https://zhuanlan.zhihu.com/p/24780433
+http://shartoo.github.io/RCNN-series/ (detail)
+http://www.voidcn.com/article/p-yyfqgfaj-bad.html
 
+object detection:
+http://www.cnblogs.com/skyfsm/p/6806246.html
+http://www.cnblogs.com/dudumiaomiao/p/6560841.html
+https://zhuanlan.zhihu.com/p/21412911
+http://www.lai18.com/content/2550547.html
+http://www.cnblogs.com/objectDetect/p/5947169.html
+
+SSD:
+https://www.bbsmax.com/A/gGdX0Vepd4/
+https://zhuanlan.zhihu.com/p/25100992
+https://zhuanlan.zhihu.com/p/24954433?refer=xiaoleimlnote
+
+
+YOLO:
+https://zhuanlan.zhihu.com/p/25236464 (detail)
+https://zhuanlan.zhihu.com/p/25045711
+https://zhuanlan.zhihu.com/p/25052190
+https://zhuanlan.zhihu.com/p/25167153 (detail)

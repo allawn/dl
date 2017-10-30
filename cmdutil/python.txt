@@ -5,4 +5,9 @@ start jupyter notebook:
 jupyter notebook --allow-root  --ip=* --no-browser
 
 
-
+添加系统src路径：
+import os
+curdir=os.getcwd()
+pardir=os.path.dirname(os.getcwd())
+import sys
+sys.path.append(curdir)
