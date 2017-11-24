@@ -35,6 +35,10 @@ input=tf.get_variable("input_var",shape=[1,24,24,3],dtype=tf.float32)
 net = slim.conv2d(input, 128, [3, 3], scope='conv1_1')
 print(net)
 
+#tf.device()
+#tf.placeholder()
+
+
 slim.repeat()
 
 def vgg16(inputs):
@@ -169,3 +173,24 @@ with tf.Session() as sess:
 #     dtypes=[tf.string, tf.string],
 #     capacity=input_reader_config.queue_capacity,
 #     min_after_dequeue=input_reader_config.min_after_dequeue)
+
+tf.image.decode_image() #aaa
+tf.placeholder(tf.bool) #aaa
+tf.constant(dtype=tf.bool,value=True)
+tf.logging.set_verbosity(tf.logging.)
+tf.Variable().op.name
+tf.train.start_queue_runners(sess=)
+tf.get_collection("aa")
+tf.train.Saver()
+# with tf.name_scope("train"):
+#     bn = tf.layers.batch_normalization(
+#         input_layer, fused=True, data_format='NCHW')
+#
+#     tf.contrib.layers.batch_norm(input_layer, fused=True, data_format='NCHW')
+
+aa=tf.train.Server().target
+tf.constant("0.5",tf.float32)
+tf.Session(target=)
+tf.get_collection("aa")
+
+tf.train.Saver().save()

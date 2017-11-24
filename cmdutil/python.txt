@@ -11,3 +11,7 @@ curdir=os.getcwd()
 pardir=os.path.dirname(os.getcwd())
 import sys
 sys.path.append(curdir)
+
+#程序后台执行
+nohup python work.py  &
+python work.py >my.log 2>&1 &

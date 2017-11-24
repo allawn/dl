@@ -1,0 +1,7 @@
+#cuda
+export CUDA_VISIBLE_DEVICES=0
+
+
+#lrn 局部相依归一化
+http://www.jianshu.com/p/c06aea337d5dtensorflow
+
