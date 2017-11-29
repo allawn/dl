@@ -181,7 +181,9 @@ tf.logging.set_verbosity(tf.logging.)
 tf.Variable().op.name
 tf.train.start_queue_runners(sess=)
 tf.get_collection("aa")
-tf.train.Saver()
+xx=tf.train.Saver()
+xx.save()
+tf.Session()
 # with tf.name_scope("train"):
 #     bn = tf.layers.batch_normalization(
 #         input_layer, fused=True, data_format='NCHW')
@@ -192,5 +194,43 @@ aa=tf.train.Server().target
 tf.constant("0.5",tf.float32)
 tf.Session(target=)
 tf.get_collection("aa")
-
+tf.add()
 tf.train.Saver().save()
+
+numWorkers=2
+with tf.device("/job:ps/task:0/cpu:0"):
+    w=tf.Variable(...)
+    b=tf.Variable(...)
+
+inputs=tf.split(0,numWorkers,input)
+outputs=[]
+for i in range(numWorkers):
+    with tf.device("/job:worker/task:%d/gpu:0" % i):
+        outputs.append(tf.matmul(input,w)+b)
+loss=f(outputs)
+
+with tf.device("/job:worker/task:0/gpu:0"):
+    output=tf.matmul(input,w)+b
+    loss=f(output)
+
+with tf.device("/job:ps/task:0/cpu:0"):
+    w=tf.Variable(...)
+    b=tf.Variable(...)
+with tf.device("/job:worker/task:0/gpu:0"):
+    output=tf.matmul(input,w)+b
+    loss=f(output)
+
+with tf.device("/job:ps/task:0/cpu:0"):
+    w=tf.Variable(...)
+    b=tf.Variable(...)
+with tf.device("/job:worker/task:1/gpu:0"):
+    output=tf.matmul(input,w)+b
+    loss=f(output)
+
+with tf.device(tf.train.replica_device_setter(ps_tasks=2)):
+    w1=tf.Variable(...)
+    b1=tf.Variable(...)
+    w2=tf.Variable(...)
+    b2=tf.Variable(...)
+    ...
+    ...
