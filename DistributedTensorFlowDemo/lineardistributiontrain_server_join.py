@@ -13,31 +13,9 @@ cluster = tf.train.ClusterSpec(
 
 server = tf.train.Server(cluster, job_name=FLAGS.job_name, task_index=FLAGS.task_id)
 
-def create_done_queue(i):
-    """Queue used to signal death for i'th ps shard. Intended to have
-    all workers enqueue an item onto it to signal doneness."""
-
-    with tf.device("/job:ps/task:%d" % (i)):
-        return tf.FIFOQueue(2, tf.int32, shared_name="done_queue"+
-                                                                 str(i))
-
-def create_done_queues():
-    return [create_done_queue(i) for i in range(1)]
-
 
 if FLAGS.job_name == 'ps':
-    # server.join()
-
-    #auto stop server
-    sess = tf.Session(server.target)
-    queue = create_done_queue(0)
-
-    # wait until all workers are done
-    for i in range(2):
-        sess.run(queue.dequeue())
-        print("ps %d received worker %d done " % (0, i))
-
-    print("ps %d: quitting"%(0))
+    server.join()
 
 else:
     is_chief = (FLAGS.task_id == 0)
@@ -58,21 +36,24 @@ else:
         y_train = [0, -1, -2, -3]
         stopHook=tf.train.StopAtStepHook( last_step=max_steps)
 
-        enq_ops = []
-        for q in create_done_queues():
-            qop = q.enqueue(1)
-            enq_ops.append(qop)
 
         with tf.train.MonitoredTrainingSession(master=server.target, is_chief=is_chief,hooks=[stopHook]) as sess:
             curr_step=0
-            while not sess.should_stop() and (curr_step+1)<max_steps:
-                curr_step,curr_W, curr_b, curr_loss=sess.run([global_step,W, b, loss], feed_dict={x: x_train, y: y_train})
-                print("curr_gl_step: %s, W: %s, b: %s, loss: %s" %(curr_step,curr_W, curr_b, curr_loss))
-                sess.run(applyGradsOp,feed_dict={x: x_train, y: y_train})
-                time.sleep(0.01)
+            while not sess.should_stop():
+                try:
+                    cur_gl_step=sess.run(global_step)
+                    print("curr_gl_step: ",cur_gl_step)
+                    curr_W, curr_b, curr_loss=sess.run([W, b, loss], feed_dict={x: x_train, y: y_train})
+                    print("W: %s, b: %s, loss: %s" %(curr_W, curr_b, curr_loss))
+                    sess.run(applyGradsOp,feed_dict={x: x_train, y: y_train})
+                    if is_chief:
+                        time.sleep(0.01)
+                    else:
+                        time.sleep(0.02)
+                except RuntimeError:
+                     print("deal Run called even after should_stop requested")
+                     break
 
-            for op in enq_ops:
-                sess.run(op)
 
 
 
