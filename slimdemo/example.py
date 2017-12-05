@@ -183,7 +183,8 @@ tf.train.start_queue_runners(sess=)
 tf.get_collection("aa")
 xx=tf.train.Saver()
 xx.save()
-tf.Session()
+ss=tf.Session()
+ss.run()
 # with tf.name_scope("train"):
 #     bn = tf.layers.batch_normalization(
 #         input_layer, fused=True, data_format='NCHW')
@@ -234,3 +235,5 @@ with tf.device(tf.train.replica_device_setter(ps_tasks=2)):
     b2=tf.Variable(...)
     ...
     ...
+
+tf.FIFOQueue()
