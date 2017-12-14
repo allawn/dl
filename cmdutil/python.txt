@@ -1,5 +1,7 @@
 set python path example:
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+set PYTHONPATH=%PYTHONPATH%;C:\My_python_lib
+
 
 start jupyter notebook:
 jupyter notebook --allow-root  --ip=* --no-browser
