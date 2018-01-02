@@ -17,3 +17,4 @@ sys.path.append(curdir)
 #程序后台执行
 nohup python work.py  &
 python work.py >my.log 2>&1 &
+python work.py > facenetsoftmaxtrain.log 2>&1 < /dev/null &
