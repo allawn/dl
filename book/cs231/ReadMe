@@ -1,0 +1,117 @@
+http://cs231n.stanford.edu/syllabus.html
+
+
+Lecture 1 	Tuesday
+April 4 	Course Introduction
+Computer vision overview
+Historical context
+Course logistics 	[slides] [video]
+Lecture 2 	Thursday
+April 6 	Image Classification
+The data-driven approach
+K-nearest neighbor
+Linear classification I 	[slides] [video]
+[python/numpy tutorial]
+[image classification notes]
+[linear classification notes]
+Lecture 3 	Tuesday
+April 11 	Loss Functions and Optimization
+Linear classification II
+Higher-level representations, image features
+Optimization, stochastic gradient descent 	[slides] [video]
+[linear classification notes]
+[optimization notes]
+Lecture 4 	Thursday
+April 13 	Introduction to Neural Networks
+Backpropagation
+Multi-layer Perceptrons
+The neural viewpoint 	[slides] [video]
+[backprop notes]
+[linear backprop example]
+[derivatives notes] (optional)
+[Efficient BackProp] (optional)
+related: [1], [2], [3] (optional)
+Lecture 5 	Tuesday
+April 18 	Convolutional Neural Networks
+History
+Convolution and pooling
+ConvNets outside vision 	[slides] [video]
+ConvNet notes
+Lecture 6 	Thursday
+April 20 	Training Neural Networks, part I
+Activation functions, initialization, dropout, batch normalization 	[slides] [video]
+Neural Nets notes 1
+Neural Nets notes 2
+Neural Nets notes 3
+tips/tricks: [1], [2], [3] (optional)
+Deep Learning [Nature] (optional)
+A1 Due 	Thursday
+April 20 	Assignment #1 due
+kNN, SVM, SoftMax, two-layer network 	[Assignment #1]
+Lecture 7 	Tuesday
+April 25 	Training Neural Networks, part II
+Update rules, ensembles, data augmentation, transfer learning 	[slides] [video]
+Neural Nets notes 3
+Proposal due 	Tuesday
+April 25 	Couse Project Proposal due 	[proposal description]
+Lecture 8 	Thursday
+April 27 	Deep Learning Software
+Caffe, Torch, Theano, TensorFlow, Keras, PyTorch, etc 	[slides] [video]
+Lecture 9 	Tuesday
+May 2 	CNN Architectures
+AlexNet, VGG, GoogLeNet, ResNet, etc 	[slides] [video]
+AlexNet, VGGNet, GoogLeNet, ResNet
+Lecture 10 	Thursday
+May 4 	Recurrent Neural Networks
+RNN, LSTM, GRU
+Language modeling
+Image captioning, visual question answering
+Soft attention 	[slides] [video]
+DL book RNN chapter (optional)
+min-char-rnn, char-rnn, neuraltalk2
+A2 Due 	Thursday
+May 4 	Assignment #2 due
+Neural networks, ConvNets 	[Assignment #2]
+Midterm 	Tuesday
+May 9 	In-class midterm
+Location: Various (not our usual classroom) 	
+Lecture 11 	Thursday
+May 11 	Detection and Segmentation
+Semantic segmentation
+Object detection
+Instance segmentation 	[slides] [video]
+Lecture 12 	Tuesday
+May 16 	Visualizing and Understanding
+Feature visualization and inversion
+Adversarial examples
+DeepDream and style transfer 	[slides] [video]
+DeepDream
+neural-style
+fast-neural-style
+Milestone 	Tuesday
+May 16 	Course Project Milestone due 	
+Lecture 13 	Thursday
+May 18 	Generative Models
+PixelRNN/CNN
+Variational Autoencoders
+Generative Adversarial Networks 	[slides] [video]
+Lecture 14 	Tuesday
+May 23 	Deep Reinforcement Learning
+Policy gradients, hard attention
+Q-Learning, Actor-Critic 	[slides] [video]
+Guest Lecture 	Thursday
+May 25 	Invited Talk: Song Han
+Efficient Methods and Hardware for Deep Learning 	[slides] [video]
+A3 Due 	Friday
+May 26 	Assignment #3 due 	[Assignment #3]
+Guest Lecture 	Tuesday
+May 30 	Invited Talk: Ian Goodfellow
+Adversarial Examples and Adversarial Training 	[slides] [video]
+Lecture 16 	Thursday
+June 1 	Student spotlight talks, conclusions 	[slides]
+Poster Due 	Monday
+June 5 	Poster PDF due 	[poster description]
+Poster Presentation 	Tuesday
+June 6 		
+Final Project Due 	Monday
+June 12 	Final course project due date 	[reports]
