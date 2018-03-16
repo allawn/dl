@@ -20,13 +20,15 @@ train_size = train_labels.shape[0]
 checkPointPath="C:\\tmp\\mnistckp\\model.ckp"
 
 #not add 正则化
-def inference(input):
+def inference(input, l2_regularizer=None):
+
     input_layer = tf.reshape(input, [-1, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNELS])
     conv1 = tf.layers.conv2d(
         inputs=input_layer,
         filters=32,
         kernel_size=[5, 5],
         padding="same",
+        kernel_regularizer=l2_regularizer,
         activation=tf.nn.relu)
     pool1 = tf.layers.max_pooling2d(inputs=conv1, pool_size=[2, 2], strides=2)
     conv2 = tf.layers.conv2d(
@@ -34,6 +36,7 @@ def inference(input):
         filters=64,
         kernel_size=[5, 5],
         padding="same",
+        kernel_regularizer=l2_regularizer,
         activation=tf.nn.relu)
     pool2 = tf.layers.max_pooling2d(inputs=conv2, pool_size=[2, 2], strides=2)
     pool2_flat = tf.reshape(pool2, [-1, 7 * 7 * 64])
@@ -48,9 +51,11 @@ def train():
 
     train_data_node = tf.placeholder(tf.float32, shape=(BATCH_SIZE, IMAGE_SIZE*IMAGE_SIZE* NUM_CHANNELS))
     train_labels_node = tf.placeholder(tf.int64, shape=(BATCH_SIZE,10))
-
-    logits = inference(train_data_node)
-    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=train_labels_node, logits=logits))
+    regularizer = tf.contrib.layers.l2_regularizer(scale=0.0)
+    logits = inference(train_data_node, regularizer)
+    l2_loss = tf.losses.get_regularization_loss()
+    entropyloss=tf.nn.softmax_cross_entropy_with_logits(labels=train_labels_node, logits=logits)
+    loss = tf.reduce_mean([l2_loss+entropyloss])
     learning_rate=0.01
     optimizer = tf.train.MomentumOptimizer(learning_rate,momentum=0.9).minimize(loss)
     labels = tf.argmax(train_labels_node, 1)

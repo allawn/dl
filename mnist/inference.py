@@ -24,5 +24,5 @@ def run(imgName):
 
 
 if __name__ == '__main__':
-    imgName="167.png"
+    imgName="1.png"
     run(imgName)
