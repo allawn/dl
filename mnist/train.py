@@ -22,7 +22,7 @@ checkPointPath="C:\\tmp\\mnistckp\\model.ckp"
 #not add 正则化
 def inference(input, l2_regularizer=None):
 
-    input_layer = tf.reshape(input, [-1, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNELS])
+    input_layer = tf.reshape(input, [-1, IMAGE_SIZE, IMAGE_SIZE, NUM_CHANNELS], name="inputLayer")
     conv1 = tf.layers.conv2d(
         inputs=input_layer,
         filters=32,
@@ -49,10 +49,11 @@ def inference(input, l2_regularizer=None):
 
 def train():
 
-    train_data_node = tf.placeholder(tf.float32, shape=(BATCH_SIZE, IMAGE_SIZE*IMAGE_SIZE* NUM_CHANNELS))
-    train_labels_node = tf.placeholder(tf.int64, shape=(BATCH_SIZE,10))
+    train_data_node = tf.placeholder(tf.float32, shape=(None, IMAGE_SIZE*IMAGE_SIZE* NUM_CHANNELS),name="inputdataName")
+    train_labels_node = tf.placeholder(tf.int64, shape=(None,10))
     regularizer = tf.contrib.layers.l2_regularizer(scale=0.0)
     logits = inference(train_data_node, regularizer)
+    prediction = tf.nn.softmax(logits,name="predictionName")
     l2_loss = tf.losses.get_regularization_loss()
     entropyloss=tf.nn.softmax_cross_entropy_with_logits(labels=train_labels_node, logits=logits)
     loss = tf.reduce_mean([l2_loss+entropyloss])
