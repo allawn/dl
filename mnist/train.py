@@ -18,6 +18,7 @@ eval_data = mnist.test.images
 eval_labels = np.asarray(mnist.test.labels, dtype=np.int32)
 train_size = train_labels.shape[0]
 checkPointPath="C:\\tmp\\mnistckp\\model.ckp"
+pbPath="C:\\tmp\\mnistckp\\model.pb"
 
 #not add 正则化
 def inference(input, l2_regularizer=None):
@@ -64,6 +65,11 @@ def train():
     accuracy = tf.reduce_mean(tf.cast(top_k_op, "float"), name="accuracy")
     saver = tf.train.Saver()
     initAll=tf.global_variables_initializer()
+
+    graph_def = tf.get_default_graph().as_graph_def()
+    with tf.gfile.GFile(pbPath, 'wb') as f:
+        f.write(graph_def.SerializeToString())
+
     with tf.Session() as sess:
         sess.run(initAll)
         for step in range(int(num_epochs * train_size) // BATCH_SIZE):
@@ -76,6 +82,7 @@ def train():
             print('Iter %d, lossVal %.3f, accuracyVal %.3f' % (step, lossVal, accuracyVal))
 
         saver.save(sess=sess,save_path=checkPointPath)
+
 
 if __name__ == '__main__':
     train()
