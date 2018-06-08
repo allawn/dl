@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 
 hidden_units=20
-rnnLayerNum=1
+rnnLayerNum=2
 rnnCells=[]
 for i in range(rnnLayerNum):
     rnnCells.append(tf.nn.rnn_cell.BasicRNNCell(num_units=hidden_units))
