@@ -20,6 +20,7 @@ output, state = tf.nn.dynamic_rnn(
     sequence_length=length(sequence),
 )
 
+#https://danijar.com/variable-sequence-lengths-in-tensorflow/
 def cost(output, target):
     # Compute cross entropy for each frame.
     cross_entropy = target * tf.log(output)
